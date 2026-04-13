@@ -1,6 +1,6 @@
 /*
  * 风格提醒（首页）：复古棋牌厅写实拟物。
- * 目标：除人物与账号框外，其余大厅界面尽量保持原样；页面应以原始大厅单屏沉浸感为主，不额外制造网页侧栏结构。
+ * 目标：大厅底图完全固定，角色切换时只替换独立人物立绘与左上头像框，尽量接近原游戏的无感切图效果。
  */
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,8 +11,9 @@ type RoleScene = {
   name: string;
   badge: string;
   title: string;
-  image: string;
-  imageClassName: string;
+  characterImage: string;
+  avatarImage: string;
+  avatarClassName: string;
   summary: string;
   style: string;
   voiceTags: string[];
@@ -20,15 +21,20 @@ type RoleScene = {
 
 type PanelKey = "avatar" | "voice" | "store" | "growth" | null;
 
+const HALL_BASE_IMAGE =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/hall_base_ai_clean_2df14a5a.png";
+
 const scenes: RoleScene[] = [
   {
     id: "baozhao",
     name: "爆燥大爷",
     badge: "火气型人设",
     title: "进场有分量、但不显凶狠的长沙熟面孔",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_preview_smoky_5ac16f4a.webp",
-    imageClassName: "hall-stage__image--baozhao",
+    characterImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_cutout_clean_f71d539e.png",
+    avatarImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_cutout_clean_f71d539e.png",
+    avatarClassName: "hall-avatar-layer--baozhao",
     summary:
       "适合强调气场、爆点和高辨识度语音反馈，进入大厅时能感到人物压场感，但整体情绪比旧版更收敛、更耐看。",
     style: "赤褐烟雾、粗粝日常、强辨识度反馈",
@@ -39,9 +45,11 @@ const scenes: RoleScene[] = [
     name: "塑普妹坨",
     badge: "甜辣型人设",
     title: "更外显、更轻社交感的长沙角色包装",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_preview_fullbody_57e45668.png",
-    imageClassName: "hall-stage__image--supu",
+    characterImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_cutout_clean_583f0e02.png",
+    avatarImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_cutout_clean_583f0e02.png",
+    avatarClassName: "hall-avatar-layer--supu",
     summary:
       "适合承接语音包商品化与装扮化表达，账号框和人物存在感更强，也更容易做出购买与展示动机。",
     style: "糖感高光、轻泡泡粒子、社交外显",
@@ -52,9 +60,11 @@ const scenes: RoleScene[] = [
     name: "街坊满哥",
     badge: "江湖型人设",
     title: "稳重仗义、熟人局里很有面子的地方牌桌熟面孔",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_preview_7bed5d31.webp",
-    imageClassName: "hall-stage__image--mange",
+    characterImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_cutout_clean_37ad124f.png",
+    avatarImage:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_cutout_clean_37ad124f.png",
+    avatarClassName: "hall-avatar-layer--mange",
     summary:
       "适合做成熟用户偏好的方言语音包形象，整体更贴近地方棋牌语境，也更利于沉淀角色系列化。",
     style: "砖红织锦、老派气场、克制张力",
@@ -108,18 +118,23 @@ export default function Home() {
       <section className="hall-viewer mx-auto flex min-h-screen w-full max-w-[1720px] flex-col justify-center px-3 py-4 md:px-5 xl:px-8">
         <div className="hall-stage-wrapper hall-stage-wrapper--immersive mx-auto w-full">
           <div className="hall-stage hall-stage--immersive">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeScene.id}
-                src={activeScene.image}
-                alt={activeScene.name}
-                className={`hall-stage__image ${activeScene.imageClassName}`}
-                initial={{ opacity: 0.2, scale: 1.008 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0.16, scale: 0.995 }}
-                transition={{ duration: 0.28, ease: "easeOut" }}
-              />
-            </AnimatePresence>
+            <img
+              src={HALL_BASE_IMAGE}
+              alt=""
+              aria-hidden="true"
+              className="hall-stage__image hall-stage__image--base hall-stage__image--clean"
+            />
+
+            <div className={`hall-avatar-layer ${activeScene.avatarClassName}`} aria-hidden="true">
+              <img src={activeScene.avatarImage} alt="" className="hall-avatar-layer__image" />
+            </div>
+
+            <img
+              src={activeScene.characterImage}
+              alt={activeScene.name}
+              className="hall-character-layer"
+              draggable={false}
+            />
 
             <button
               type="button"
