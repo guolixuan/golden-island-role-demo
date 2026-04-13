@@ -1,6 +1,6 @@
 /*
  * 风格提醒（首页）：复古棋牌厅写实拟物。
- * 本页采用“完整大厅底图 + 右侧美容院二级界面”的结构：一级界面保留默认人物与账号信息；二级界面不遮挡整个大厅，并坚持左侧形象、右侧说明试听的布局原则。
+ * 本页采用“完整大厅底图 + 右侧美容院二级界面”的结构：一级界面保留默认人物与账号信息；二级界面不遮挡整个大厅，并坚持顶部纯名称导航、左侧人物预览、右侧说明试听的布局原则。
  */
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -277,9 +277,9 @@ export default function Home() {
                         type="button"
                         className={`beauty-salon__nav-item ${active ? "is-active" : ""}`}
                         onClick={() => setSelectedRoleId(role.id)}
+                        aria-label={`切换到${role.name}`}
                       >
                         <strong>{role.name}</strong>
-                        <span>{owned ? (equippedRoleId === role.id ? "使用中" : "已购买") : `${role.price}悟性`}</span>
                       </button>
                     );
                   })}
