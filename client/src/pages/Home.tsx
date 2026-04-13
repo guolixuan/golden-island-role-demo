@@ -39,15 +39,15 @@ const roles: RoleData[] = [
     id: "baozhao",
     name: "大爷",
     badge: "火气型语音包",
-    title: "爆点足、存在感强，适合做赢牌和催局反馈",
+    title: "火气足、上桌就有存在感，适合喜欢热闹牌桌氛围的玩家",
     stageImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_preview_v1_86005b9d.webp",
     cutoutImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_cutout_clean_c223fa3d.png",
     summary:
-      "购买后大厅主形象替换为大爷版本，整体更有压场感，适合强调长沙牌桌上的热闹氛围。",
+      "适合想把大厅换成更有火气、更有牌桌熟人感风格的玩家。购买后，大厅人物会直接切换成和预览一致的大爷形象。",
     longDescription:
-      "大爷版本更适合承担高情绪反馈节点，比如摸牌、催局、胡牌和连胜提醒。视觉上保留地方棋牌厅的熟人感，语气上偏直给，能明显拉开与默认大厅人物的辨识差异。",
+      "大爷语音包突出催局、赢牌和起势时的热闹感，整体听感更直接，适合喜欢高存在感角色的玩家。",
     style: "赤褐烟雾、粗粝日常、局上存在感强",
     price: 1888,
     voiceTags: ["催局抱怨", "胡牌得意", "火气上头"],
@@ -59,15 +59,15 @@ const roles: RoleData[] = [
     id: "supu",
     name: "妹坨",
     badge: "甜辣型语音包",
-    title: "更轻社交、更外显，适合分享感和陪伴感表达",
+    title: "轻快甜辣、陪伴感更强，适合喜欢热闹互动的玩家",
     stageImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_preview_640256ff.webp",
     cutoutImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_cutout_clean_a3df0a9b.png",
     summary:
-      "购买后大厅主形象替换为妹坨版本，更适合做装扮化和语音包商品化展示，氛围更轻快。",
+      "适合想让大厅氛围更轻快、更亲切的玩家。购买后，大厅人物会直接切换成和预览一致的妹坨形象。",
     longDescription:
-      "妹坨版本主打甜辣与陪伴感，适合承接签到、活动、赢牌鼓励等更轻互动的内容。与默认大厅相比，这个版本更像是用户主动购买后的个性化表达。",
+      "妹坨语音包更偏轻松陪伴和赢牌鼓励，适合喜欢柔和一点、社交感更强的玩家。",
     style: "糖感高光、轻泡泡粒子、社交外显",
     price: 1688,
     voiceTags: ["撒娇播报", "连胡庆祝", "亲昵称呼"],
@@ -79,15 +79,15 @@ const roles: RoleData[] = [
     id: "mange",
     name: "满哥",
     badge: "江湖型语音包",
-    title: "沉稳熟人局气质，更适合老牌友向的地方感表达",
+    title: "稳重熟人局气质，适合喜欢老牌友风格的玩家",
     stageImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_preview_eeabfb07.webp",
     cutoutImage:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_cutout_clean_d5f22fa9.png",
     summary:
-      "购买后大厅主形象替换为满哥版本，气质更克制稳重，贴近熟人局里的仗义牌友。",
+      "适合想让大厅更稳、更有老牌友气质的玩家。购买后，大厅人物会直接切换成和预览一致的满哥形象。",
     longDescription:
-      "满哥版本更适合偏成熟用户的审美与听感。语气不炸，但很有分寸，既能体现地方口吻，也不会让大厅氛围显得过于嘈杂，适合作为长期使用型角色。",
+      "满哥语音包更克制沉稳，适合喜欢熟人局味道和长期使用感的玩家。",
     style: "砖红织锦、老派气场、克制张力",
     price: 2088,
     voiceTags: ["沉稳报听", "赢牌调侃", "熟人局招呼"],
@@ -105,7 +105,6 @@ export default function Home() {
   const [wisdomBalance, setWisdomBalance] = useState(INITIAL_WISDOM);
   const [deduction, setDeduction] = useState<DeductionState | null>(null);
   const [playingLine, setPlayingLine] = useState<string | null>(null);
-  const [introExpanded, setIntroExpanded] = useState(false);
 
   const equippedRole = useMemo(() => roles.find((role) => role.id === equippedRoleId) ?? null, [equippedRoleId]);
   const selectedRole = useMemo(() => roles.find((role) => role.id === selectedRoleId) ?? roles[0], [selectedRoleId]);
@@ -119,7 +118,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setIntroExpanded(false);
     setPlayingLine(null);
 
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
@@ -127,8 +125,8 @@ export default function Home() {
     }
   }, [selectedRoleId]);
 
-  const currentStageImage = equippedRole?.stageImage ?? DEFAULT_STAGE_IMAGE;
-  const currentStageLabel = equippedRole ? `${equippedRole.name}已生效` : "默认大厅人物与账号信息";
+  const currentStageImage = DEFAULT_STAGE_IMAGE;
+  const currentStageLabel = equippedRole ? `${equippedRole.name}大厅形象已生效` : "默认大厅人物与账号信息";
   const selectedOwned = ownedRoleIds.includes(selectedRole.id);
   const selectedEquipped = equippedRoleId === selectedRole.id;
   const featuredPreviewLines = selectedRole.previewLines.slice(0, 2);
@@ -216,6 +214,26 @@ export default function Home() {
               className="hall-stage__image hall-stage__image--base hall-stage__image--clean"
               draggable={false}
             />
+
+            {equippedRole ? (
+              <>
+                <div className={`hall-avatar-layer hall-avatar-layer--${equippedRole.id}`} aria-hidden="true">
+                  <img
+                    src={equippedRole.cutoutImage}
+                    alt=""
+                    className="hall-avatar-layer__image"
+                    draggable={false}
+                  />
+                </div>
+                <img
+                  src={equippedRole.cutoutImage}
+                  alt=""
+                  aria-hidden="true"
+                  className={`hall-character-layer hall-character-layer--${equippedRole.id}`}
+                  draggable={false}
+                />
+              </>
+            ) : null}
 
             <button
               type="button"
@@ -311,7 +329,7 @@ export default function Home() {
 
               <div className="beauty-salon__detail beauty-salon__detail--side">
                 <div className="beauty-salon__intro-card">
-                  <p className="beauty-salon__label">人物介绍</p>
+                  <p className="beauty-salon__label">角色说明</p>
                   <h3>{selectedRole.title}</h3>
                   <p className="beauty-salon__intro-copy">{selectedRole.summary}</p>
 
@@ -320,16 +338,6 @@ export default function Home() {
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
-
-                  <button
-                    type="button"
-                    className="beauty-salon__more-btn"
-                    onClick={() => setIntroExpanded((current) => !current)}
-                  >
-                    {introExpanded ? "收起详细说明" : "展开详细说明"}
-                  </button>
-
-                  {introExpanded ? <p className="beauty-salon__extra-copy">{selectedRole.longDescription}</p> : null}
                 </div>
 
                 <div className="beauty-salon__audio-card beauty-salon__audio-card--compact">
