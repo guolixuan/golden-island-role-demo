@@ -1,3 +1,8 @@
+/*
+ * 风格提醒（全局样式）：复古棋牌厅写实拟物。
+ * 原则：保持老式地方棋牌大厅的棕木、暗红、金边和发光反馈，不将界面改写成现代极简网页。
+ */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,83 +48,105 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --radius: 0.9rem;
+  --background: oklch(0.19 0.026 36);
+  --foreground: oklch(0.95 0.028 86);
+  --card: oklch(0.26 0.032 34 / 88%);
+  --card-foreground: oklch(0.95 0.026 86);
+  --popover: oklch(0.24 0.03 34 / 94%);
+  --popover-foreground: oklch(0.95 0.026 86);
+  --primary: oklch(0.78 0.159 76);
+  --primary-foreground: oklch(0.19 0.026 36);
+  --secondary: oklch(0.34 0.05 28);
+  --secondary-foreground: oklch(0.95 0.026 86);
+  --muted: oklch(0.3 0.033 31);
+  --muted-foreground: oklch(0.82 0.02 83);
+  --accent: oklch(0.42 0.078 45);
+  --accent-foreground: oklch(0.97 0.018 90);
+  --destructive: oklch(0.62 0.231 24);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.57 0.114 58 / 40%);
+  --input: oklch(0.4 0.06 34 / 40%);
+  --ring: oklch(0.78 0.159 76 / 70%);
+  --chart-1: oklch(0.72 0.145 65);
+  --chart-2: oklch(0.67 0.143 38);
+  --chart-3: oklch(0.6 0.129 23);
+  --chart-4: oklch(0.84 0.107 95);
+  --chart-5: oklch(0.53 0.109 18);
+  --sidebar: oklch(0.23 0.028 34);
+  --sidebar-foreground: oklch(0.95 0.026 86);
+  --sidebar-primary: oklch(0.78 0.159 76);
+  --sidebar-primary-foreground: oklch(0.19 0.026 36);
+  --sidebar-accent: oklch(0.4 0.08 45);
+  --sidebar-accent-foreground: oklch(0.98 0.018 90);
+  --sidebar-border: oklch(0.57 0.114 58 / 40%);
+  --sidebar-ring: oklch(0.78 0.159 76 / 70%);
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --background: oklch(0.19 0.026 36);
+  --foreground: oklch(0.95 0.028 86);
+  --card: oklch(0.26 0.032 34 / 88%);
+  --card-foreground: oklch(0.95 0.026 86);
+  --popover: oklch(0.24 0.03 34 / 94%);
+  --popover-foreground: oklch(0.95 0.026 86);
+  --primary: oklch(0.78 0.159 76);
+  --primary-foreground: oklch(0.19 0.026 36);
+  --secondary: oklch(0.34 0.05 28);
+  --secondary-foreground: oklch(0.95 0.026 86);
+  --muted: oklch(0.3 0.033 31);
+  --muted-foreground: oklch(0.82 0.02 83);
+  --accent: oklch(0.42 0.078 45);
+  --accent-foreground: oklch(0.97 0.018 90);
+  --destructive: oklch(0.62 0.231 24);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.57 0.114 58 / 40%);
+  --input: oklch(0.4 0.06 34 / 40%);
+  --ring: oklch(0.78 0.159 76 / 70%);
+  --chart-1: oklch(0.72 0.145 65);
+  --chart-2: oklch(0.67 0.143 38);
+  --chart-3: oklch(0.6 0.129 23);
+  --chart-4: oklch(0.84 0.107 95);
+  --chart-5: oklch(0.53 0.109 18);
+  --sidebar: oklch(0.23 0.028 34);
+  --sidebar-foreground: oklch(0.95 0.026 86);
+  --sidebar-primary: oklch(0.78 0.159 76);
+  --sidebar-primary-foreground: oklch(0.19 0.026 36);
+  --sidebar-accent: oklch(0.4 0.08 45);
+  --sidebar-accent-foreground: oklch(0.98 0.018 90);
+  --sidebar-border: oklch(0.57 0.114 58 / 40%);
+  --sidebar-ring: oklch(0.78 0.159 76 / 70%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
+
+  html {
+    min-height: 100%;
+    background:
+      radial-gradient(circle at top, rgb(103 45 17 / 0.5), transparent 35%),
+      linear-gradient(180deg, #3b1f12 0%, #1b0f0a 100%);
+  }
+
   body {
-    @apply bg-background text-foreground;
+    min-height: 100%;
+    font-family: "Noto Sans SC", sans-serif;
+    background: transparent;
+    color: var(--foreground);
   }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -134,44 +161,457 @@
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
   .flex {
-    min-height: 0;
     min-width: 0;
+    min-height: 0;
+  }
+
+  .hall-shell {
+    position: relative;
+    background:
+      radial-gradient(circle at center, rgb(255 179 71 / 0.1), transparent 28%),
+      linear-gradient(180deg, rgb(58 29 18 / 0.34) 0%, rgb(15 8 6 / 0.82) 100%);
+  }
+
+  .hall-shell__grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px);
+    background-size: 4px 4px, 4px 4px;
+    mix-blend-mode: soft-light;
+    opacity: 0.24;
+  }
+
+  .hall-viewer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hall-stage-wrapper {
+    position: relative;
+    border-radius: 1.8rem;
+    padding: clamp(0.45rem, 0.9vw, 0.72rem);
+    background:
+      linear-gradient(135deg, rgb(255 224 157 / 0.8), rgb(109 59 18 / 0.8)),
+      linear-gradient(180deg, rgb(74 36 16 / 0.75), rgb(36 17 10 / 0.92));
+    box-shadow:
+      0 30px 90px rgb(0 0 0 / 0.52),
+      inset 0 1px 0 rgb(255 241 196 / 0.65),
+      inset 0 0 0 2px rgb(96 48 17 / 0.7);
+  }
+
+  .hall-stage-wrapper--immersive {
+    max-width: 1500px;
+  }
+
+  .hall-stage {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 1.35rem;
+    background: linear-gradient(180deg, #6a3416 0%, #2f180e 100%);
+    box-shadow: inset 0 0 0 1px rgb(255 213 133 / 0.24);
+  }
+
+  .hall-stage--immersive {
+    width: 100%;
+  }
+
+  .hall-stage__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+  }
+
+  .hall-hotspot {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    outline: none;
+    transition: box-shadow 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
+    border-radius: 1rem;
+  }
+
+  .hall-hotspot:hover,
+  .hall-hotspot:focus-visible {
+    background: rgb(255 211 92 / 0.08);
+    box-shadow: 0 0 0 2px rgb(255 211 92 / 0.5), 0 0 24px rgb(255 163 51 / 0.42);
+    transform: scale(1.01);
+  }
+
+  .hall-hotspot--avatar {
+    left: 0.3%;
+    top: 0.2%;
+    width: 23%;
+    height: 17%;
+  }
+
+  .hall-hotspot--character {
+    left: 22%;
+    top: 13%;
+    width: 30%;
+    height: 62%;
+  }
+
+  .hall-hotspot--store {
+    right: 11%;
+    top: 0.5%;
+    width: 14%;
+    height: 16%;
+  }
+
+  .hall-hotspot--rank {
+    left: 4%;
+    top: 24%;
+    width: 14%;
+    height: 44%;
+  }
+
+  .hall-role-pills {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    z-index: 3;
+    display: inline-flex;
+    max-width: calc(100% - 2rem);
+    transform: translateX(-50%);
+    gap: 0.55rem;
+    border-radius: 999px;
+    padding: 0.45rem;
+    background: linear-gradient(180deg, rgb(32 16 11 / 0.42), rgb(18 9 6 / 0.78));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 14px 34px rgb(0 0 0 / 0.28), inset 0 0 0 1px rgb(255 225 166 / 0.14);
+  }
+
+  .hall-role-pills__item {
+    display: grid;
+    gap: 0.15rem;
+    min-width: 8.4rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.65rem 0.9rem;
+    background: transparent;
+    text-align: center;
+    color: rgb(247 222 174 / 0.82);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+  }
+
+  .hall-role-pills__item strong {
+    font-size: 0.94rem;
+    font-weight: 800;
+    color: rgb(255 246 224);
+  }
+
+  .hall-role-pills__item span {
+    font-size: 0.76rem;
+    color: rgb(243 212 154 / 0.74);
+  }
+
+  .hall-role-pills__item:hover,
+  .hall-role-pills__item.is-active {
+    transform: translateY(-1px);
+    border-color: rgb(255 204 97 / 0.28);
+    background: linear-gradient(180deg, rgb(105 50 22 / 0.88), rgb(56 26 14 / 0.94));
+    box-shadow: 0 12px 24px rgb(0 0 0 / 0.26), inset 0 1px 0 rgb(255 237 199 / 0.12);
+  }
+
+  .hall-bottom-note {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-radius: 1.1rem;
+    padding: 0.78rem 0.95rem;
+    background: linear-gradient(180deg, rgb(30 16 10 / 0.18), rgb(18 9 6 / 0.74));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.26), inset 0 0 0 1px rgb(255 227 169 / 0.14);
+  }
+
+  .hall-bottom-note p {
+    margin: 0;
+    color: rgb(252 233 196 / 0.9);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .hall-bottom-note__badge {
+    flex-shrink: 0;
+    border-radius: 999px;
+    padding: 0.32rem 0.72rem;
+    background: linear-gradient(180deg, rgb(255 201 102 / 0.94), rgb(210 112 22 / 0.94));
+    color: rgb(59 27 11);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .hall-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+    background: rgb(6 3 2 / 0.52);
+    backdrop-filter: blur(8px);
+  }
+
+  .hall-modal {
+    width: min(100%, 760px);
+    border-radius: 1.5rem;
+    background:
+      linear-gradient(180deg, rgb(75 35 17 / 0.98), rgb(29 14 9 / 0.98)),
+      linear-gradient(135deg, rgb(255 211 141 / 0.08), transparent 40%);
+    box-shadow:
+      0 26px 80px rgb(0 0 0 / 0.46),
+      inset 0 1px 0 rgb(255 236 195 / 0.18),
+      inset 0 0 0 1px rgb(255 201 107 / 0.14);
+    overflow: hidden;
+  }
+
+  .hall-modal__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 1.05rem 0.8rem;
+  }
+
+  .hall-modal__titlewrap {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .hall-modal__icon {
+    display: inline-flex;
+    height: 2.7rem;
+    width: 2.7rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgb(255 206 115 / 0.95), rgb(223 117 22 / 0.95));
+    color: rgb(70 31 13);
+    box-shadow: 0 10px 24px rgb(0 0 0 / 0.28);
+  }
+
+  .hall-modal__titlewrap p {
+    margin: 0;
+    color: rgb(242 214 157 / 0.74);
+    font-size: 0.8rem;
+  }
+
+  .hall-modal__titlewrap h2 {
+    margin: 0.18rem 0 0;
+    color: rgb(255 247 223);
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 800;
+  }
+
+  .hall-modal__close {
+    display: inline-flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(255 204 97 / 0.14);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.04);
+    color: rgb(247 224 178 / 0.9);
+    transition: background-color 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  }
+
+  .hall-modal__close:hover {
+    background: rgb(255 193 91 / 0.12);
+    border-color: rgb(255 204 97 / 0.28);
+    transform: scale(1.03);
+  }
+
+  .hall-modal__body {
+    padding: 0 1.05rem 1.05rem;
+  }
+
+  .hall-modal__roleline {
+    display: grid;
+    gap: 0.18rem;
+    border-radius: 1.2rem;
+    padding: 0.95rem 1rem;
+    background: linear-gradient(180deg, rgb(97 47 22 / 0.72), rgb(51 24 13 / 0.92));
+    box-shadow: inset 0 1px 0 rgb(255 233 182 / 0.12), inset 0 0 0 1px rgb(255 189 89 / 0.08);
+  }
+
+  .hall-modal__tag {
+    color: rgb(245 213 152 / 0.72);
+    font-size: 0.78rem;
+  }
+
+  .hall-modal__roleline strong {
+    color: rgb(255 245 220);
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
+  .hall-modal__roleline small {
+    color: rgb(255 227 176 / 0.8);
+    font-size: 0.9rem;
+  }
+
+  .hall-modal__desc {
+    margin: 0.9rem 0 0;
+    color: rgb(244 221 182 / 0.86);
+    line-height: 1.78;
+    font-size: 0.95rem;
+  }
+
+  .hall-modal__spark {
+    margin-top: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    padding: 0.5rem 0.75rem;
+    background: rgb(255 190 85 / 0.12);
+    color: rgb(255 227 176);
+    box-shadow: inset 0 0 0 1px rgb(255 200 97 / 0.16);
+  }
+
+  .hall-modal__tags {
+    margin-top: 0.95rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .hall-modal__tags span {
+    border-radius: 999px;
+    padding: 0.38rem 0.72rem;
+    background: rgb(255 197 88 / 0.11);
+    color: rgb(255 228 171);
+    font-size: 0.8rem;
+    box-shadow: inset 0 0 0 1px rgb(255 205 117 / 0.12);
   }
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .hall-role-pills {
+      top: auto;
+      bottom: 5.5rem;
+      max-width: calc(100% - 1rem);
+      width: calc(100% - 1rem);
+      justify-content: center;
+      flex-wrap: wrap;
+      border-radius: 1.2rem;
+      transform: translateX(-50%);
+    }
+
+    .hall-role-pills__item {
+      min-width: 7rem;
+      flex: 1 1 30%;
+      padding-inline: 0.65rem;
+    }
+
+    .hall-bottom-note {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+      padding-right: 0.85rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hall-viewer {
+      padding-inline: 0.45rem;
+      padding-block: 0.55rem;
+    }
+
+    .hall-stage-wrapper {
+      border-radius: 1rem;
+      padding: 0.3rem;
+    }
+
+    .hall-stage {
+      border-radius: 0.8rem;
+    }
+
+    .hall-role-pills {
+      bottom: 5.8rem;
+      gap: 0.35rem;
+      padding: 0.35rem;
+    }
+
+    .hall-role-pills__item {
+      min-width: 5.85rem;
+      padding: 0.5rem 0.4rem;
+    }
+
+    .hall-role-pills__item strong {
+      font-size: 0.8rem;
+    }
+
+    .hall-role-pills__item span {
+      font-size: 0.68rem;
+    }
+
+    .hall-bottom-note {
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      padding: 0.62rem 0.72rem;
+      border-radius: 0.8rem;
+    }
+
+    .hall-bottom-note p {
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+
+    .hall-bottom-note__badge {
+      font-size: 0.68rem;
+      padding: 0.24rem 0.56rem;
+    }
+
+    .hall-modal-backdrop {
+      padding: 0.55rem;
+    }
+
+    .hall-modal {
+      border-radius: 1.1rem;
+    }
+
+    .hall-modal__header,
+    .hall-modal__body {
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
     }
   }
 }
