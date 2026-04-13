@@ -105,6 +105,7 @@ export default function Home() {
   const [wisdomBalance, setWisdomBalance] = useState(INITIAL_WISDOM);
   const [deduction, setDeduction] = useState<DeductionState | null>(null);
   const [playingLine, setPlayingLine] = useState<string | null>(null);
+  const [introExpanded, setIntroExpanded] = useState(false);
 
   const equippedRole = useMemo(() => roles.find((role) => role.id === equippedRoleId) ?? null, [equippedRoleId]);
   const selectedRole = useMemo(() => roles.find((role) => role.id === selectedRoleId) ?? roles[0], [selectedRoleId]);
@@ -117,10 +118,20 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    setIntroExpanded(false);
+    setPlayingLine(null);
+
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+  }, [selectedRoleId]);
+
   const currentStageImage = equippedRole?.stageImage ?? DEFAULT_STAGE_IMAGE;
   const currentStageLabel = equippedRole ? `${equippedRole.name}已生效` : "默认大厅人物与账号信息";
   const selectedOwned = ownedRoleIds.includes(selectedRole.id);
   const selectedEquipped = equippedRoleId === selectedRole.id;
+  const featuredPreviewLines = selectedRole.previewLines.slice(0, 2);
 
   const openSalon = () => {
     setSelectedRoleId(equippedRoleId ?? roles[0].id);
@@ -302,21 +313,30 @@ export default function Home() {
                 <div className="beauty-salon__intro-card">
                   <p className="beauty-salon__label">人物介绍</p>
                   <h3>{selectedRole.title}</h3>
-                  <p>{selectedRole.summary}</p>
-                  <p>{selectedRole.longDescription}</p>
+                  <p className="beauty-salon__intro-copy">{selectedRole.summary}</p>
+
+                  <div className="beauty-salon__tags beauty-salon__tags--compact">
+                    {selectedRole.voiceTags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    className="beauty-salon__more-btn"
+                    onClick={() => setIntroExpanded((current) => !current)}
+                  >
+                    {introExpanded ? "收起详细说明" : "展开详细说明"}
+                  </button>
+
+                  {introExpanded ? <p className="beauty-salon__extra-copy">{selectedRole.longDescription}</p> : null}
                 </div>
 
-                <div className="beauty-salon__tags">
-                  {selectedRole.voiceTags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-
-                <div className="beauty-salon__audio-card">
+                <div className="beauty-salon__audio-card beauty-salon__audio-card--compact">
                   <div className="beauty-salon__audio-head">
                     <div>
                       <p className="beauty-salon__label">语音试听</p>
-                      <h4>点击台词试听角色口吻</h4>
+                      <h4>点击两句代表台词试听</h4>
                     </div>
                     <div className="beauty-salon__audio-pill">
                       <Headphones size={15} />
@@ -325,7 +345,7 @@ export default function Home() {
                   </div>
 
                   <div className="beauty-salon__voice-list">
-                    {selectedRole.previewLines.map((line) => {
+                    {featuredPreviewLines.map((line) => {
                       const active = playingLine === line;
 
                       return (
@@ -386,7 +406,7 @@ export default function Home() {
                   </button>
 
                   <p className="beauty-salon__purchase-note">
-                    规则说明：未购买时大厅保持当前人物不变；购买成功后立即扣除悟性值，并把大厅人物切换为当前角色皮肤。
+                    未购买不会改大厅；购买成功后立即扣除悟性，并直接切换当前大厅人物。
                   </p>
                 </div>
               </div>
