@@ -125,7 +125,7 @@ export default function Home() {
     }
   }, [selectedRoleId]);
 
-  const currentStageImage = DEFAULT_STAGE_IMAGE;
+  const currentStageImage = equippedRole?.stageImage ?? DEFAULT_STAGE_IMAGE;
   const currentStageLabel = equippedRole ? `${equippedRole.name}大厅形象已生效` : "默认大厅人物与账号信息";
   const selectedOwned = ownedRoleIds.includes(selectedRole.id);
   const selectedEquipped = equippedRoleId === selectedRole.id;
@@ -215,26 +215,6 @@ export default function Home() {
               draggable={false}
             />
 
-            {equippedRole ? (
-              <>
-                <div className={`hall-avatar-layer hall-avatar-layer--${equippedRole.id}`} aria-hidden="true">
-                  <img
-                    src={equippedRole.cutoutImage}
-                    alt=""
-                    className="hall-avatar-layer__image"
-                    draggable={false}
-                  />
-                </div>
-                <img
-                  src={equippedRole.cutoutImage}
-                  alt=""
-                  aria-hidden="true"
-                  className={`hall-character-layer hall-character-layer--${equippedRole.id}`}
-                  draggable={false}
-                />
-              </>
-            ) : null}
-
             <button
               type="button"
               className="hall-hotspot hall-hotspot--beauty"
@@ -242,17 +222,6 @@ export default function Home() {
               aria-label="打开美容院角色购买界面"
             />
 
-            {equippedRole ? (
-              <div className="hall-equipped-banner">
-                <Wand2 size={14} />
-                <span>当前大厅人物：{equippedRole.name}</span>
-              </div>
-            ) : (
-              <div className="hall-equipped-banner hall-equipped-banner--default">
-                <Sparkles size={14} />
-                <span>默认大厅人物与账号已恢复，点击美容院可购买角色皮肤</span>
-              </div>
-            )}
           </div>
         </div>
       </section>
