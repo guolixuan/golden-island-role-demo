@@ -12,6 +12,7 @@ type RoleScene = {
   badge: string;
   title: string;
   image: string;
+  imageClassName: string;
   summary: string;
   style: string;
   voiceTags: string[];
@@ -24,13 +25,14 @@ const scenes: RoleScene[] = [
     id: "baozhao",
     name: "爆燥大爷",
     badge: "火气型人设",
-    title: "进场就有压场感的长沙狠角色",
+    title: "进场有分量、但不显凶狠的长沙熟面孔",
     image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_preview_v1_a55db313.webp",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/baozhao_daye_preview_smoky_5ac16f4a.webp",
+    imageClassName: "hall-stage__image--baozhao",
     summary:
-      "适合强调气场、爆点和高辨识度语音反馈，进入大厅时第一眼就能让用户感受到角色存在感。",
-    style: "赤褐火光、粗粝日常、强情绪反馈",
-    voiceTags: ["开局吼场", "胡牌嘲讽", "催局抱怨"],
+      "适合强调气场、爆点和高辨识度语音反馈，进入大厅时能感到人物压场感，但整体情绪比旧版更收敛、更耐看。",
+    style: "赤褐烟雾、粗粝日常、强辨识度反馈",
+    voiceTags: ["开局吼场", "胡牌调侃", "催局抱怨"],
   },
   {
     id: "supu",
@@ -38,19 +40,21 @@ const scenes: RoleScene[] = [
     badge: "甜辣型人设",
     title: "更外显、更轻社交感的长沙角色包装",
     image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_preview_bf9f3d83.webp",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/supu_meituo_preview_fullbody_57e45668.png",
+    imageClassName: "hall-stage__image--supu",
     summary:
-      "适合承接语音包商品化与装扮化表达，账号框和人物存在感更强，更容易做出购买与展示动机。",
+      "适合承接语音包商品化与装扮化表达，账号框和人物存在感更强，也更容易做出购买与展示动机。",
     style: "糖感高光、轻泡泡粒子、社交外显",
     voiceTags: ["撒娇播报", "连胡庆祝", "亲昵称呼"],
   },
   {
-    id: "jiefang",
-    name: "解放满哥",
+    id: "mange",
+    name: "街坊满哥",
     badge: "江湖型人设",
-    title: "稳重里带点狠劲的地方牌桌熟面孔",
+    title: "稳重仗义、熟人局里很有面子的地方牌桌熟面孔",
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663532081903/G2cnixsTWzfPN8YrPedaFH/jiefang_mange_preview_7bed5d31.webp",
+    imageClassName: "hall-stage__image--mange",
     summary:
       "适合做成熟用户偏好的方言语音包形象，整体更贴近地方棋牌语境，也更利于沉淀角色系列化。",
     style: "砖红织锦、老派气场、克制张力",
@@ -109,7 +113,7 @@ export default function Home() {
                 key={activeScene.id}
                 src={activeScene.image}
                 alt={activeScene.name}
-                className="hall-stage__image"
+                className={`hall-stage__image ${activeScene.imageClassName}`}
                 initial={{ opacity: 0.2, scale: 1.008 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0.16, scale: 0.995 }}
@@ -157,11 +161,6 @@ export default function Home() {
                   </button>
                 );
               })}
-            </div>
-
-            <div className="hall-bottom-note">
-              <span className="hall-bottom-note__badge">高还原体验版</span>
-              <p>当前仅替换人物与账号框，其他区域尽量保持原始大厅表达。点击人物、账号框、道具店与奖杯位可查看说明。</p>
             </div>
           </div>
         </div>
